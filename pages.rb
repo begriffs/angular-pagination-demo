@@ -10,6 +10,7 @@ get '/integers' do
   if range
     min, max = range['min'].to_i, range['max'].to_i
     if request.env['HTTP_RANGE_UNIT'] == 'items'
+      headers 'Link' => "</integers>; rel=\"next\"; items=\"#{1 + max}-#{1 + max*2 - min}\""
       body '[' + (min .. max).to_a.join(', ') + ']'
     else
       status 416
