@@ -1,6 +1,5 @@
 doctype html
-html xmlns:ng="http://angularjs.org" ng-app=""
-  head
-    script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"
+html
   body
     == yield
+    script data-main="js/main" src="components/requirejs/require.js"
