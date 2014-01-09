@@ -1,7 +1,7 @@
 div ng-controller="FunCtrl"
   ul
-    li ng-repeat="letter in letters"
-      | {{ letter }}
+    li ng-repeat="item in alphabet"
+      | {{ item.letter }}
   ul
-    li ng-repeat="int in integers"
-      | {{ int }}
+    li ng-repeat="item in integers"
+      | {{ item.integer }}

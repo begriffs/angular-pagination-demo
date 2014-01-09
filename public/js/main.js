@@ -33,7 +33,7 @@ require(
         };
       }]).
       controller('FunCtrl', ['$scope', 'paginated-resource', function(scope, resource) {
-        scope.letters = resource('/alphabet').query();
+        scope.alphabet = resource('/alphabet').query();
         scope.integers = resource('/integers').query();
       }]);
 
