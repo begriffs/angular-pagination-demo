@@ -44,6 +44,6 @@ get '/alphabet' do
   paginate 26 do |min, max|
     min ||= 0
     max ||= 25
-    body '[' + ( (min .. max).map { |i| "'" + (i+'a'.ord).chr + "'" } ).join(', ') + ']'
+    body '[' + ( (min .. max).map { |i| '"' + (i+'a'.ord).chr + '"' } ).join(', ') + ']'
   end
 end
