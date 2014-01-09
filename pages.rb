@@ -33,7 +33,8 @@ end
 get '/integers' do
   paginate 100 do |min, max|
     if min && max
-      body '[' + (min .. max).to_a.join(', ') + ']'
+      numbers = (min .. max).map { |i| "{ \"integer\": #{i} }" }
+      body ('[' + numbers.join(', ') + ']')
     else
       status 413 # result too large
     end
@@ -44,6 +45,6 @@ get '/alphabet' do
   paginate 26 do |min, max|
     min ||= 0
     max ||= 25
-    body '[' + ( (min .. max).map { |i| '"' + (i+'a'.ord).chr + '"' } ).join(', ') + ']'
+    body '[' + ( (min .. max).map { |i| '{ "letter": "' + (i+'a'.ord).chr + '"}' } ).join(', ') + ']'
   end
 end
