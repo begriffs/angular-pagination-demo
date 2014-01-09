@@ -14,7 +14,7 @@ def paginate limit
     min, max = range['min'].to_i, range['max'].to_i
     if request.env['HTTP_RANGE_UNIT'] == 'items'
       if 0 <= max - min && max - min < (limit || Float::INFINITY)
-        headers 'Link' => "</integers>; rel=\"next\"; items=\"#{1 + max}-#{1 + max*2 - min}\""
+        headers 'Link' => "</#{request.path}>; rel=\"next\"; items=\"#{1 + max}-#{1 + max*2 - min}\""
         headers 'Content-Range' => "items #{min}-#{max}/#{limit || '*'}"
         status 206
         yield min, max
